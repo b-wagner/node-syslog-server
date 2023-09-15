@@ -37,30 +37,12 @@ switch(socketType){
         throw 'Invalid socket type '+socketType;
 }
  
-// State Information
 var listening = false ;
 var clients = [] ;
 var count = 0 ;
  
 server.on('msg', data => {
     console.info('message received (%i) from %s:%i\n%o\n', ++count, data.address, data.port, data) ;
-    /*
-    message received (1) from ::ffff:192.168.1.13:59666
-    {
-      "facility": "daemon",
-      "facilityCode": 3,
-      "severity": "info",
-      "severityCode": 6,
-      "tag": "systemd[1]",
-      "timestamp": "2018-12-26T17:53:57.000Z",
-      "hostname": "localhost",
-      "address": "::ffff:192.168.1.13",
-      "family": "IPv6",
-      "port": 20514,
-      "size": 80,
-      "msg": "Started Daily apt download activities."
-    }	
-    */
 })
 .on('invalid', err => {
     console.warn('Invalid message format received: %o\n', err) ;
